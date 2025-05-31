@@ -6,11 +6,11 @@ const { responseHandler } = require("../utils/responseHandler");
 const create = asyncHandler(async (req, res, next) => {
   const { phoneId, email, address } = req.body;
 
-  if (!phoneId || !email || !address) {
+  if ( !email || !address) {
     throw new ApiError(400, "phoneId, email va address kerak");
   }
 
-  const newAbout = await about.create({ phoneId, email, address });
+  const newAbout = await about.create({  email, address });
   responseHandler(res, 201, "About created successfully", newAbout);
 });
 
